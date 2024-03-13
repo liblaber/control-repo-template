@@ -1,0 +1,71 @@
+{
+  "sdkName": "test-sdk",
+  "apiVersion": "1.0.0",
+  "apiName": "test-api",
+  "specFilePath": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json",
+  "languages": [
+    "csharp",
+    "go",
+    "python",
+    "typescript"
+  ],
+  "createDocs": false,
+  "auth": [
+    "bearer"
+  ],
+  "customizations": {
+    "includeOptionalSnippetParameters": true,
+    "authentication": {
+      "access": {
+        "prefix": "Bearer"
+      }
+    },
+    "devContainer": false,
+    "generateEnv": true,
+    "inferServiceNames": false,
+    "injectedModels": [],
+    "license": {
+      "type": "MIT"
+    },
+    "responseHeaders": false,
+    "retry": {
+      "enabled": true,
+      "maxAttempts": 3,
+      "retryDelay": 150
+    }
+  },
+  "languageOptions": {
+    "python": {
+      "alwaysInitializeOptionals": false,
+      "pypiPackageName": "",
+      "githubRepoName": "",
+      "ignoreFiles": [],
+      "sdkVersion": "1.0.0"
+    },
+    "typescript": {
+      "bundle": false,
+      "exportClassDefault": false,
+      "httpClient": "axios",
+      "npmName": "",
+      "npmOrg": "",
+      "githubRepoName": "",
+      "ignoreFiles": [],
+      "sdkVersion": "1.0.0"
+    },
+    "go": {
+      "goModuleName": "github.com/swagger-api/swagger-petstore",
+      "githubRepoName": "",
+      "ignoreFiles": [],
+      "sdkVersion": "1.0.0"
+    },
+    "csharp": {
+      "githubRepoName": "",
+      "ignoreFiles": [],
+      "sdkVersion": "1.0.0"
+    }
+  },
+  "liblabVersion": "1",
+  "publishing": {
+    "githubOrg": ""
+  }
+}
