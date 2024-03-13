@@ -1,4 +1,6 @@
-## This is a template control repo for easier GitHub integration setup with liblab.
+# This is a template control repo for easier GitHub integration setup with liblab.
+
+For more information read our docs: https://developers.liblab.com/tutorials/integrate-with-github-actions
 
 ## Create Your Own Control Repo
 
