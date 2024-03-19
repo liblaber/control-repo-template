@@ -2,7 +2,7 @@
   "sdkName": "test-sdk",
   "apiVersion": "1.0.0",
   "apiName": "test-api",
-  "specFilePath": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json",
+  "specFilePath": "spec.json",
   "languages": [
     "csharp",
     "go",
