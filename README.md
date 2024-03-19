@@ -12,4 +12,4 @@ To create your own control repo, you can use this repository as a template! Just
 4. Click **Create repository**
 5. Clone your new repository
 6. Update your own **liblab.config.json**
-7. Update your own **open-api-spec.json** content or update the **specFilePath in liblab.config.json** to point to your external open api spec url
+7. Update your own **spec.json** content or update the **specFilePath in liblab.config.json** to point to your external open api spec url

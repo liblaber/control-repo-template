@@ -1,10 +1,15 @@
 name: Generate SDKs using liblab
 
 on:
-  # Add any other triggers you want here, such as a push to the spec file
   workflow_call:
   workflow_dispatch:
-
+  push:
+    branches:
+      - main
+    paths:
+      - 'liblab.config.json'
+      - 'spec.json'
+      - 'hooks/**'
 jobs:
   build-and-pr:
     name: Generate SDKs and create PRs
@@ -18,7 +23,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: "20" # Specify the node version you want to use
+          node-version: '20'
       - name: Install liblab
         run: npm install -g liblab
       - name: Start Build
