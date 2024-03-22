@@ -15,5 +15,5 @@ jobs:
         uses: liblaber/sdk-updates@v1.0.0
         with:
           liblab_token: ${{ secrets.LIBLAB_TOKEN }}
-          github_token: ${{ secrets.LIBLAB_GITHUB_TOKEN }}
+          liblab_github_token: ${{ secrets.LIBLAB_GITHUB_TOKEN }}
           
