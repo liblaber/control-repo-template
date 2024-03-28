@@ -14,6 +14,7 @@ jobs:
   build-and-pr:
     name: Generate SDKs and create PRs
     runs-on: ubuntu-latest
+    if: github.run_number != 1
     env:
       LIBLAB_TOKEN: ${{ secrets.LIBLAB_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.LIBLAB_GITHUB_TOKEN }}
@@ -23,7 +24,8 @@ jobs:
           if [[ -n "${{ secrets.LIBLAB_TOKEN }}" && -n "${{ secrets.LIBLAB_GITHUB_TOKEN }}" ]]; then
             echo "Secrets are set, proceeding with the workflow"
           else
-            echo "Error: Secrets not set, skipping the workflow"
+            echo "Error: Secrets LIBLAB_TOKEN and LIBLAB_GITHUB_TOKEN are required, see https://developers.liblab.com/tutorials/integrate-with-github-actions/#create-tokens"
+            echo "::error::Secrets LIBLAB_TOKEN and LIBLAB_GITHUB_TOKEN are required, see https://developers.liblab.com/tutorials/integrate-with-github-actions/#create-tokens"
             exit 1
           fi
       - name: Checkout
@@ -38,3 +40,4 @@ jobs:
         run: liblab build --yes
       - name: Create PRs to GitHub repos
         run: liblab pr
+
