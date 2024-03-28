@@ -18,6 +18,14 @@ jobs:
       LIBLAB_TOKEN: ${{ secrets.LIBLAB_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.LIBLAB_GITHUB_TOKEN }}
     steps:
+      - name: Check if secrets are set
+        run: |
+          if [[ -n "${{ secrets.LIBLAB_TOKEN }}" && -n "${{ secrets.LIBLAB_GITHUB_TOKEN }}" ]]; then
+            echo "Secrets are set, proceeding with the workflow"
+          else
+            echo "Error: Secrets not set, skipping the workflow"
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Node.js environment
