@@ -131,3 +131,6 @@ dist
 
 # JetBrains IDE
 .idea
+
+# Generated SDKs
+output/
