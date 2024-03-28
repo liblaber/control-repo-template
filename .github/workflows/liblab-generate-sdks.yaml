@@ -24,9 +24,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install liblab
-        run: npm install -g liblab
-      - name: Start Build
-        run: liblab build --yes
-      - name: Create PRs to GitHub repos
-        run: liblab pr
+      - name: Verify liblab token
+        if: ${{ env.LIBLAB_TOKEN == '' }}
+        run: echo "::warning::LIBLAB_TOKEN has not been set"
+      - name: Verify github token
+        if: ${{ env.LIBLAB_GITHUB_TOKEN == '' }}
+        run: echo "::warning::LIBLAB_GITHUB_TOKEN has not been set"
+      - name: Generate an SDK and create a PR
+        if: ${{ env.LIBLAB_TOKEN != '' && env.LIBLAB_GITHUB_TOKEN != '' }}
+        run: |
+          npm install -g liblab
+          liblab build --yes
+          liblab pr

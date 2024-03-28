@@ -11,7 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Verify liblab token
+        if: ${{ env.LIBLAB_TOKEN == '' }}
+        run: echo "::warning::LIBLAB_TOKEN has not been set"
+      - name: Verify github token
+        if: ${{ env.LIBLAB_GITHUB_TOKEN == '' }}
+        run: echo "::warning::LIBLAB_GITHUB_TOKEN has not been set"
       - name: Generate SDKs and publish PRs
+        if: ${{ env.LIBLAB_TOKEN != '' && env.LIBLAB_GITHUB_TOKEN != '' }}
         uses: liblaber/sdk-updates@v1.0.0
         with:
           liblab_token: ${{ secrets.LIBLAB_TOKEN }}
