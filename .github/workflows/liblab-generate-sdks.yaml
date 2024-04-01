@@ -10,6 +10,7 @@ on:
       - 'liblab.config.json'
       - 'spec.json'
       - 'hooks/**'
+      - 'customPlanModifiers/**'
 jobs:
   build-and-pr:
     name: Generate SDKs and create PRs
