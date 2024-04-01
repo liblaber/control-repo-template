@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.run_number != 1
     env:
+      LIBLAB_CI: true
       LIBLAB_TOKEN: ${{ secrets.LIBLAB_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.LIBLAB_GITHUB_TOKEN }}
     steps:

@@ -132,5 +132,8 @@ dist
 # JetBrains IDE
 .idea
 
+# MacOS
+**/.DS_Store
+
 # Generated SDKs
 output/
