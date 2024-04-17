@@ -19,7 +19,7 @@ jobs:
     env:
       LIBLAB_CI: true
       LIBLAB_TOKEN: ${{ secrets.LIBLAB_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.LIBLAB_GITHUB_TOKEN }}
+      LIBLAB_GITHUB_TOKEN: ${{ secrets.LIBLAB_GITHUB_TOKEN }}
     steps:
       - name: Check if secrets are set
         run: |
