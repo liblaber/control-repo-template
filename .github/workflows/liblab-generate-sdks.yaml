@@ -8,9 +8,7 @@ on:
       - main
     paths:
       - 'liblab.config.json'
-      - 'spec.json'
-      - 'spec.yml'
-      - 'spec.yaml'
+      - 'spec.*'
       - 'hooks/**'
       - 'customPlanModifiers/**'
 jobs:
