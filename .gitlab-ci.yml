@@ -1,0 +1,36 @@
+stages:
+  - build_and_pr
+
+variables:
+  LIBLAB_CI: "true"
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - changes:
+        - liblab.config.json
+        - spec.*
+        - hooks/**
+        - customPlanModifiers/**
+
+generate_sdks_and_pull_request:
+  stage: build_and_pr
+  image: node:20
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - changes:
+        - liblab.config.json
+        - spec.*
+        - hooks/**
+        - customPlanModifiers/**
+  before_script:
+    - |
+      if [ -z "$LIBLAB_TOKEN" ] || [ -z "$LIBLAB_GITLAB_TOKEN" ]; then
+        echo "Error: Variables LIBLAB_TOKEN and LIBLAB_GITLAB_TOKEN are required, see https://developers.liblab.com/tutorials/integrate-with-gitlab-actions/#create-tokens"
+        exit 1
+      fi
+    - npm install -g liblab
+  script:
+    - liblab build --yes --pr -p gitlab
