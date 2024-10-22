@@ -22,14 +22,14 @@ pipeline {
                     if (!env.REPO_HOST_PLATFORM) {
                         error("Error: REPO_HOST_PLATFORM is not defined")
                     }
-                    
-                    if(env.REPO_HOST_PLATFORM == 'github' && !env.LIBLAB_GITHUB_TOKEN) {
+
+                    if (env.REPO_HOST_PLATFORM == 'github' && !env.LIBLAB_GITHUB_TOKEN) {
                         error("Error: LIBLAB_GITHUB_TOKEN is not defined")
                     }
-                    if(env.REPO_HOST_PLATFORM == 'bitbucket' && !env.LIBLAB_BITBUCKET_TOKEN) {
+                    if (env.REPO_HOST_PLATFORM == 'bitbucket' && !env.LIBLAB_BITBUCKET_TOKEN) {
                         error("Error: LIBLAB_BITBUCKET_TOKEN is not defined")
                     }
-                    if(env.REPO_HOST_PLATFORM == 'gitlab' && !env.LIBLAB_GITLAB_TOKEN) {
+                    if (env.REPO_HOST_PLATFORM == 'gitlab' && !env.LIBLAB_GITLAB_TOKEN) {
                         error("Error: LIBLAB_GITLAB_TOKEN is not defined")
                     }
 
