@@ -2,8 +2,10 @@ pipeline {
     agent any
     environment {
         LIBLAB_TOKEN = credentials('LIBLAB_TOKEN')
-        LIBLAB_BITBUCKET_TOKEN = credentials('LIBLAB_BITBUCKET_TOKEN')
         REPO_HOST_PLATFORM = credentials('REPO_HOST_PLATFORM')
+        LIBLAB_GITHUB_TOKEN = credentials('LIBLAB_GITHUB_TOKEN')
+        LIBLAB_BITBUCKET_TOKEN = credentials('LIBLAB_BITBUCKET_TOKEN')
+        LIBLAB_GITLAB_TOKEN = credentials('LIBLAB_GITLAB_TOKEN')
     }
     stages {
         stage('Checkout Repository') {
@@ -14,12 +16,23 @@ pipeline {
         stage('Pre-check for Environment Variables') {
             steps {
                 script {
-                    if (!env.LIBLAB_TOKEN || !env.LIBLAB_BITBUCKET_TOKEN) {
-                        error("Error: LIBLAB_TOKEN or LIBLAB_BITBUCKET_TOKEN is not defined")
+                    if (!env.LIBLAB_TOKEN) {
+                        error("Error: LIBLAB_TOKEN is not defined")
                     }
                     if (!env.REPO_HOST_PLATFORM) {
                         error("Error: REPO_HOST_PLATFORM is not defined")
                     }
+                    
+                    if(env.REPO_HOST_PLATFORM == 'github' && !env.LIBLAB_GITHUB_TOKEN) {
+                        error("Error: LIBLAB_GITHUB_TOKEN is not defined")
+                    }
+                    if(env.REPO_HOST_PLATFORM == 'bitbucket' && !env.LIBLAB_BITBUCKET_TOKEN) {
+                        error("Error: LIBLAB_BITBUCKET_TOKEN is not defined")
+                    }
+                    if(env.REPO_HOST_PLATFORM == 'gitlab' && !env.LIBLAB_GITLAB_TOKEN) {
+                        error("Error: LIBLAB_GITLAB_TOKEN is not defined")
+                    }
+
                     echo "Environment variables are defined."
                 }
             }
